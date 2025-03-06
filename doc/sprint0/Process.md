@@ -1,8 +1,3 @@
----
-# Process
-
----
-
 # Process
 
 ### Team Organization
