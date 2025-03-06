@@ -1,8 +1,3 @@
----
-title: README
-
----
-
 # README
 
 ### Motivation behind MindSage
