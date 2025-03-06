@@ -1,8 +1,3 @@
----
-# Product Backlog: PB
-
----
-
 # PB: Product Backlog
 
 | ID | As a...   | I want to be able to...                                     |So that...                                                  |Priority|Sprint|Status   |
