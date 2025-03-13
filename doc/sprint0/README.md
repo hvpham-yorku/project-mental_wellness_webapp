@@ -12,6 +12,7 @@ Dev tools: git, GitHub, VS code
 Go to MindSage directory and then to backend directory. Run this:
 ```
 pip install -r requirements.txt
+python routes.py
 ```
 Then go to the mind-sage-frontend directory and run the following:
 ```
