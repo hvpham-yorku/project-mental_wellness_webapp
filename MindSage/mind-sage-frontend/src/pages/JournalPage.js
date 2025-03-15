@@ -4,7 +4,7 @@ import Journalling from "../components/Journalling";
 const JournalPage = () => {
     return (
         <div>
-            <h1>Text Editor</h1>
+            <h1>Dear Journal...</h1>
             <Journalling />
         </div>
     );

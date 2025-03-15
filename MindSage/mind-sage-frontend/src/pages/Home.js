@@ -1,4 +1,5 @@
 ﻿import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
@@ -23,6 +24,7 @@ const EmojiSlider = ({ value, onChange, emojis }) => {
 };
 
 function Home() {
+    const navigate = useNavigate(); //hook for buttons that navigate pages
 
     const [moodData, setMoodData] = useState({
         happiness: 50,
@@ -98,7 +100,9 @@ function Home() {
                 </div>
                 <button type="submit">Submit Mood Entry</button>
             </form>
-
+            <div>
+                <button onClick={() => navigate("/journal")}>Go to Journal</button>
+            </div>
         </div>
     );
 }
