@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\Home.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MindSage\\mind-sage-frontend\\src\\pages\\Home.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
@@ -23,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MindSage\\mind-sage-frontend\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\components\\Journalling.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MindSage\\mind-sage-frontend\\src\\components\\Journalling.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
@@ -38,11 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "package.json",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\package.json",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\package.json",
@@ -50,12 +50,11 @@
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\package.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-14T22:04:48.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T22:04:48.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "requirements.txt",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\requirements.txt",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\requirements.txt",
@@ -63,25 +62,24 @@
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\requirements.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-14T22:03:32.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T22:03:32.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "index.js",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\index.js",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\src\\index.js",
               "ToolTip": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\index.js",
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\src\\index.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-03-14T20:39:12.098Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "App.js",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\App.js",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\src\\App.js",
@@ -94,26 +92,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Home.js",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\Home.js",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\src\\pages\\Home.js",
               "ToolTip": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\Home.js",
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\src\\pages\\Home.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-03-14T19:09:35.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "JournalPage.js",
               "DocumentMoniker": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js",
               "RelativeDocumentMoniker": "MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js",
               "ToolTip": "D:\\Users\\CHRIS\\Documents\\the-hobbie-and-smile-library\\2015-2019\\Homework\\LE-EECS 3311 Sec N (Software Designs)\\Project\\project-mental_wellness_webapp\\MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js",
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\src\\pages\\JournalPage.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-03-14T19:03:00.84Z",
               "EditorCaption": ""
@@ -128,8 +126,7 @@
               "RelativeToolTip": "MindSage\\mind-sage-frontend\\src\\components\\Journalling.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-03-14T18:31:34.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-14T18:31:34.988Z"
             }
           ]
         }

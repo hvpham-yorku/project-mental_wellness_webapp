@@ -1,5 +1,5 @@
 import React from "react";
-import "./Journalling.css"; // Create this file for styling
+import "./Journaling.css"; // Create this file for styling
 
 const Journalling = () => {
     return (

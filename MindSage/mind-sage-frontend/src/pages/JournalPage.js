@@ -1,11 +1,19 @@
 import React from "react";
-import Journalling from "../components/Journalling";
+import { useNavigate } from "react-router-dom";
+import Journaling from "../components/Journaling";
 
 const JournalPage = () => {
+    const navigate = useNavigate(); 
+
     return (
         <div>
-            <h1>Dear Journal...</h1>
-            <Journalling />
+            <div>
+                <h1>Dear Journal...</h1>
+                <Journaling />
+            </div>
+            <div>
+                <button onClick={() => navigate("/")}>Go Home</button>
+            </div>
         </div>
     );
 };
