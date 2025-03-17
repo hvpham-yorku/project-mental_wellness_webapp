@@ -1,25 +1,40 @@
 from flask import Flask, request, jsonify
-from models import insert_journal_entry, get_journal_entries, insert_mood_entry, get_mood_entries, get_mood_history
+from models import insert_journal_entry, get_journal_entries, get_journal_entry, insert_mood_entry, get_mood_entries, get_mood_history
 from flask_cors import CORS
 import uuid
 
 app = Flask(__name__)
 CORS(app) 
 
-@app.route('/journal', methods=['POST'])
+@app.route('/api/add-journal', methods=['POST'])
 def add_journal_entry():
     data = request.get_json()
-    id = data.get('id')
-    content = data.get('content')
-    mood = data.get('mood')
 
-    result = insert_journal_entry(id, content, mood)
+    user_id = data.get('user_id')
+    content = data.get('content')
+    mood = data.get('mood')  # Optional for journal entries
+
+    print("📌 RECEIVED JSON:", data)  # ✅ Debugging Line
+
+    # Input validation
+    if not user_id or not content:
+        return jsonify({"success": False, "error": "User ID and content are required"}), 400
+
+    result = insert_journal_entry(user_id, content, mood)
     return jsonify(result), 201
 
-@app.route('/journal/<id>', methods=['GET'])
-def fetch_journal_entries(id):
-    result = get_journal_entries(id)
+# Fetch All Journal Entries for a User
+@app.route('/journal/<user_id>', methods=['GET'])
+def fetch_journal_entries(user_id):
+    result = get_journal_entries(user_id)
     return jsonify(result), 200
+
+# Fetch Specific Journal Entry
+@app.route('/journal/<user_id>/<entry_id>', methods=['GET'])
+def fetch_journal_entry(user_id, entry_id):
+    result = get_journal_entry(user_id, entry_id)
+    return jsonify(result), 200
+
 
 @app.route('/api/add-mood-entry', methods=['POST'])
 def add_mood_entry():
