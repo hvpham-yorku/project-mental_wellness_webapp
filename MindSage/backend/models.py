@@ -42,15 +42,14 @@ def insert_mood_entry(happiness, anxiety, energy, stress, activity, notes=""):
         "notes": notes
     }
 
-    print("INSERTING DATA:", data)  # ✅ Debugging Line
-
+    print("INSERTING DATA:", data) 
     response = supabase.table("mood_entries").insert(data).execute()
     return response.data
 
 def get_mood_entries():
     try:
         response = supabase.table("mood_entries").select("*").execute()
-        return response.data  # ✅ Returns list of mood entries
+        return response.data  
     except Exception as e:
         print("ERROR:", e)
         return None
