@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from models import insert_journal_entry, get_journal_entries, insert_mood_entry, get_mood_entries, get_mood_history, user_registration, user_login, token_verification, user_logout
+from models import insert_journal_entry, get_journal_entries, insert_mood_entry, get_mood_entry, get_mood_history, user_registration, user_login, token_verification, user_logout, get_authenticated_user
 from flask_cors import CORS
 import uuid
 
@@ -26,41 +26,56 @@ def fetch_journal_entries(id):
 def add_mood_entry():
     data = request.get_json()
 
-    print("RECEIVED JSON:", data)  
+    # Authenticate user
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user["id"]
 
     try:
-        happiness = float(data.get('happiness', 0))
-        anxiety = float(data.get('anxiety', 0))
-        energy = float(data.get('energy', 0))
-        stress = float(data.get('stress', 0))
-        activity = str(data.get('activity', ""))
-        notes = str(data.get('notes', ""))
+        # Convert data types
+        mood_data = {
+            "happiness": float(data.get('happiness', 0)),
+            "anxiety": float(data.get('anxiety', 0)),
+            "energy": float(data.get('energy', 0)),
+            "stress": float(data.get('stress', 0)),
+            "activity": str(data.get('activity', "")),
+            "notes": str(data.get('notes', ""))
+        }
 
-        result = insert_mood_entry(happiness, anxiety, energy, stress, activity, notes)
+        result = insert_mood_entry(user_id, **mood_data)
         return jsonify({"success": True, "data": result}), 201
 
     except ValueError as e:
-        print("ERROR:", e)  
         return jsonify({"error": f"Invalid data type: {e}"}), 400
+
     
-@app.route('/mood', methods=['GET'])
-def fetch_mood_entries():
-    try:
-        mood_data = get_mood_entries()
-        if mood_data is None:
-            return jsonify({"error": "Failed to fetch mood entries"}), 500
-        
-        return jsonify({"data": mood_data, "success": True}), 200
+@app.route('/mood/<entry_id>', methods=['GET'])
+def fetch_mood_entry(entry_id):
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    user_id = user["id"]
+
+    result = get_mood_entry(entry_id, user_id)
+    if not result:
+        return jsonify({"error": "Mood entry not found"}), 404
+
+    return jsonify({"data": result, "success": True}), 200
 
 
+@app.route('/mood/history', methods=['GET'])
+def fetch_mood_history():
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
 
-@app.route('/mood/<id>', methods=['GET'])
-def fetch_mood_history(id):
-    result = get_mood_history(id)
-    return jsonify(result), 200
+    user_id = user["id"]
+    result = get_mood_history(user_id)
+
+    return jsonify({"data": result, "success": True}), 200
 
 # api for user signup
 @app.route('/api/signup', methods=['POST'])
