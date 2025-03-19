@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from models import insert_journal_entry, get_journal_entries, get_journal_entry, insert_mood_entry, get_mood_entries, get_mood_history
+from models import insert_journal_entry, get_journal_history, get_journal_entry, insert_mood_entry, get_mood_entries, get_mood_history
 from flask_cors import CORS
 import uuid
 
@@ -26,7 +26,7 @@ def add_journal_entry():
 # Fetch All Journal Entries for a User
 @app.route('/journal/<user_id>', methods=['GET'])
 def fetch_journal_entries(user_id):
-    result = get_journal_entries(user_id)
+    result = get_journal_history(user_id)
     return jsonify(result), 200
 
 # Fetch Specific Journal Entry
