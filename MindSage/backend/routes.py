@@ -6,34 +6,53 @@ import uuid
 app = Flask(__name__)
 CORS(app) 
 
+
 @app.route('/api/add-journal', methods=['POST'])
 def add_journal_entry():
     data = request.get_json()
 
-    user_id = data.get('user_id')
+    # Authenticate user
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user["id"]
     content = data.get('content')
-   # mood = data.get('mood')  # Optional for journal entries
+     # mood = data.get('mood')  # Optional for journal entries
 
     print("RECEIVED JSON:", data)  
 
     # Input validation
-    if not user_id or not content:
-        return jsonify({"success": False, "error": "User ID and content are required"}), 400
+    if not content:
+        return jsonify({"success": False, "error": "Content is required"}), 400
 
     result = insert_journal_entry(user_id, content)
     return jsonify(result), 201
 
 # Fetch All Journal Entries for a User
-@app.route('/journal/<user_id>', methods=['GET'])
-def fetch_journal_entries(user_id):
+@app.route('/journal', methods=['GET'])
+def fetch_journal_entries():
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user["id"]
     result = get_journal_history(user_id)
     return jsonify(result), 200
 
 # Fetch Specific Journal Entry
-@app.route('/journal/<user_id>/<entry_id>', methods=['GET'])
-def fetch_journal_entry(user_id, entry_id):
+@app.route('/journal/<entry_id>', methods=['GET'])
+def fetch_journal_entry(entry_id):
+    user = get_authenticated_user()
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user["id"]
     result = get_journal_entry(user_id, entry_id)
-    return jsonify(result), 200
+    if not result:
+        return jsonify({"error": "Journal entry not found"}), 404
+
+    return jsonify({"data": result, "success": True}), 200
 
 #add mood entries to supabase database
 @app.route('/api/add-mood-entry', methods=['POST'])
