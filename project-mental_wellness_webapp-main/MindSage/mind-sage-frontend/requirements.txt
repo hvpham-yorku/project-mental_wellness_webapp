@@ -1,0 +1,13 @@
+# Frontend Setup Requirements
+
+## Core Tools
+Node.js (v16 or higher)          # JavaScript runtime environment
+npm (v8 or higher)               # Node Package Manager
+React (v18 or higher)            # JavaScript library for building user interfaces
+React DOM (v18 or higher)        # React package for DOM rendering
+
+## Dependencies
+axios                           # HTTP client for making API requests
+rc-slider                       # Slider component for mood input
+react-router-dom                # For routing in React applications (if applicable)
+react-icons                     # Icons library for React (optional, if used)
