@@ -15,15 +15,15 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Function to insert a journal entry
-def insert_journal_entry(user_id, content, mood):
+def insert_journal_entry(user_id, content):
     data = {
         "id": str(uuid.uuid4()),  # Unique ID for each journal entry
         "user_id": user_id,
         "content": content.strip(),
-        "mood": mood, #do we need this with journal?
+       # "mood": mood, #do we need this with journal?
         #"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
-    print("📌 INSERTING JOURNAL ENTRY:", data)  # ✅ Debugging Line
+    print("INSERTING JOURNAL ENTRY:", data) 
 
     #response = supabase.table("journal_entries").insert(data).execute()
     #return response
@@ -31,7 +31,7 @@ def insert_journal_entry(user_id, content, mood):
         response = supabase.table("journal_entries").insert(data).execute()
         return {"success": True, "data": response.data}
     except Exception as e:
-        print("🚨 ERROR inserting journal entry:", e)
+        print("ERROR inserting journal entry:", e)
         return {"success": False, "error": str(e)}
 
 # Fetch Journal Entries for a Specific User
@@ -43,7 +43,7 @@ def get_journal_history(user_id):
         return {"success": True, "data": response.data}
 
     except Exception as e:
-        print("🚨 ERROR fetching journal entries for user:", e)
+        print("ERROR fetching journal entries for user:", e)
         return {"success": False, "error": str(e)}
     
 # Fetch a Specific Journal Entry of a user by ID of the journal
@@ -64,7 +64,7 @@ def get_journal_entry(user_id, entry_id):
         return {"success": True, "data": response.data[0]}  # Return the single entry
 
     except Exception as e:
-        print("🚨 ERROR fetching journal entry:", e)
+        print("ERROR fetching journal entry:", e)
         return {"success": False, "error": str(e)}
     
 # Fetch All Journal Entries
@@ -73,7 +73,7 @@ def get_journal_entries():
         response = supabase.table("journal_entries").select("*").execute()
         return {"success": True, "data": response.data}
     except Exception as e:
-        print("🚨 ERROR fetching journal entries:", e)
+        print("ERROR fetching journal entries:", e)
         return {"success": False, "error": str(e)}
     
 #  Function to insert a mood entry
@@ -88,17 +88,16 @@ def insert_mood_entry(happiness, anxiety, energy, stress, activity, notes=""):
         "notes": notes
     }
 
-    print("📌 INSERTING DATA:", data)  # ✅ Debugging Line
-
+    print("INSERTING DATA:", data) 
     response = supabase.table("mood_entries").insert(data).execute()
     return response.data
 
 def get_mood_entries():
     try:
         response = supabase.table("mood_entries").select("*").execute()
-        return response.data  # ✅ Returns list of mood entries
+        return response.data  
     except Exception as e:
-        print("🚨 ERROR:", e)
+        print("ERROR:", e)
         return None
 
 # Function to get mood history for a user

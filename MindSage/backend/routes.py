@@ -12,15 +12,15 @@ def add_journal_entry():
 
     user_id = data.get('user_id')
     content = data.get('content')
-    mood = data.get('mood')  # Optional for journal entries
+   # mood = data.get('mood')  # Optional for journal entries
 
-    print("📌 RECEIVED JSON:", data)  # ✅ Debugging Line
+    print("RECEIVED JSON:", data)  
 
     # Input validation
     if not user_id or not content:
         return jsonify({"success": False, "error": "User ID and content are required"}), 400
 
-    result = insert_journal_entry(user_id, content, mood)
+    result = insert_journal_entry(user_id, content)
     return jsonify(result), 201
 
 # Fetch All Journal Entries for a User
@@ -40,7 +40,7 @@ def fetch_journal_entry(user_id, entry_id):
 def add_mood_entry():
     data = request.get_json()
 
-    print("📌 RECEIVED JSON:", data)  # ✅ Debugging Line
+    print("RECEIVED JSON:", data) 
 
     try:
         happiness = float(data.get('happiness', 0))
@@ -54,7 +54,7 @@ def add_mood_entry():
         return jsonify({"success": True, "data": result}), 201
 
     except ValueError as e:
-        print("🚨 ERROR:", e)  # ✅ Print error message
+        print("ERROR:", e)  
         return jsonify({"error": f"Invalid data type: {e}"}), 400
     
 @app.route('/mood', methods=['GET'])
