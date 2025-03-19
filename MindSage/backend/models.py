@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import uuid
 import jwt
 from flask import request
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
@@ -111,20 +112,67 @@ def get_authenticated_user():
     return {"id": verified_token.get("sub")}  # Extract user ID
 
 # Function to insert a journal entry
-def insert_journal_entry(id, content, mood):
+def insert_journal_entry(user_id, content):
     data = {
-        "id": id,
-        "content": content,
-        "mood": mood
+        "id": str(uuid.uuid4()),  # Unique ID for each journal entry
+        "user_id": user_id,
+        "content": content.strip(),
+       # "mood": mood, #do we need this with journal?
+        #"timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
-    response = supabase.table("journal_entries").insert(data).execute()
-    return response
+    print("INSERTING JOURNAL ENTRY:", data) 
 
-# Function to get journal entries for a user
-def get_journal_entries(id):
-    response = supabase.table("journal_entries").select("*").eq("id", id).execute()
-    return response
+    #response = supabase.table("journal_entries").insert(data).execute()
+    #return response
+    try:
+        response = supabase.table("journal_entries").insert(data).execute()
+        return {"success": True, "data": response.data}
+    except Exception as e:
+        print("ERROR inserting journal entry:", e)
+        return {"success": False, "error": str(e)}
 
+# Fetch Journal Entries for a Specific User
+def get_journal_history(user_id):
+    try:
+        response = supabase.table("journal_entries").select("*").eq("user_id", user_id).execute()
+        if not response.data:  # Handle cases where no entries are found
+            return {"success": False, "error": "No journal entries found for this user."}
+        return {"success": True, "data": response.data}
+
+    except Exception as e:
+        print("ERROR fetching journal entries for user:", e)
+        return {"success": False, "error": str(e)}
+    
+# Fetch a Specific Journal Entry of a user by ID of the journal
+def get_journal_entry(user_id, entry_id):
+    try:
+        response = (
+            supabase
+            .table("journal_entries")
+            .select("*")
+            .eq("user_id", user_id)
+            .eq("id", entry_id)
+            .execute()
+        )
+
+        if not response.data:
+            return {"success": False, "error": "Journal entry not found."}
+
+        return {"success": True, "data": response.data[0]}  # Return the single entry
+
+    except Exception as e:
+        print("ERROR fetching journal entry:", e)
+        return {"success": False, "error": str(e)}
+    
+# Fetch All Journal Entries
+def get_journal_entries():
+    try:
+        response = supabase.table("journal_entries").select("*").execute()
+        return {"success": True, "data": response.data}
+    except Exception as e:
+        print("ERROR fetching journal entries:", e)
+        return {"success": False, "error": str(e)}
+    
 #  Function to insert a mood entry
 def insert_mood_entry(user_id, happiness, anxiety, energy, stress, activity, notes=""):
     data = {
