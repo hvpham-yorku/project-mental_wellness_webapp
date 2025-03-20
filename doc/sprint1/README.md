@@ -10,7 +10,7 @@ Mental health is a topic that has gained traction this past decade. With the rai
 - **Personalized Activity Suggestions** – Suggests actions based on journal content.  
 - **Secure & Private** – User authentication ensures confidentiality.  
 
-## 🚀 Installation & Setup  
+## Installation & Setup  
 
 ### Backend Setup
 
