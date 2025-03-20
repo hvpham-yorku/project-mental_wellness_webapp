@@ -15,7 +15,7 @@
 - Aishani: Login page frontend, sprint1.md
 - Avantika: Login page backend and security with user registration, Supabase setup with frontend/backend integration, Mood slider data storage to backend, System Design doc.
 - Chris: Journal page frontend, Page navigation, App page routing system, RPM.md
-- Nidhi: Journal entry backend, Recording standup meetings
+- Nidhi: Journal entry backend, Login and SignUp Page Connectivity, sprint1.md, Backend Documentation
 - Shivail: Mood evaluation and journal mood extraction API, Mood sliders frontend
 
 ## Release Goals:
