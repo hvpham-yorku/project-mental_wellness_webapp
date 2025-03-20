@@ -56,9 +56,9 @@ System Design Document with MVC Chart and CRC Cards: Avantika Nair
 
 RPM.md Creation: Chris Shi
 
-Sprint1.md Creation: Nidhi Modi
+Sprint1.md, README.md, Backend and API Documentation: Nidhi Modi
 
-Standup doc: Aishani Karfa
+Standup doc and Frontend Documentation: Aishani Karfa
 
 
 **Team Capacity:**
