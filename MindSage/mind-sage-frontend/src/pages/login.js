@@ -1,93 +1,56 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSignup, setIsSignup] = useState(false); // to toggle between signup and login
-  const [error, setError] = useState("");
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate(); // Initialize navigate
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+        const response = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
 
-      if (response.data.success) {
-        setMessage("Login successful!");
-        // Store the access token if needed
-        localStorage.setItem("access_token", response.data.access_token);
-        // Redirect user or handle login success
-      } else {
-        setMessage(`Login failed: ${response.data.message || 'Unknown error'}`);
-      }
-    } catch (err) {
-      console.error("Login Error:", err.response || err.message || err);
-      setMessage("Error occurred during login. Please check the console for more details.");
-    }
-  };
+        const data = await response.json();
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:5000/api/signup", {
-        email,
-        password,
-      });
+        if (response.ok) {
+            localStorage.setItem("token", data.token); // Store token if needed
+            navigate("/home"); // Redirect to home page
+        } else {
+            setError(data.error || "Login failed");
+        }
+    };
 
-      if (response.data.success) {
-        setMessage("Account created successfully! Please log in.");
-        setIsSignup(false); // Switch back to login after signup
-      } else {
-        setMessage(`Failed to create account: ${response.data.message || 'Unknown error'}`);
-      }
-    } catch (error) {
-      console.error("Signup Error:", error.response || error.message || error);
-      setMessage("Error occurred during signup. Please check the console for more details.");
-    }
-  };
-
-  return (
-    <div>
-      <h1>{isSignup ? "Sign Up" : "Login"}</h1>
-      <form onSubmit={isSignup ? handleSignup : handleLogin}>
+    return (
         <div>
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <h2>Login</h2>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <form onSubmit={handleLogin}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <button type="submit">Login</button>
+            </form>
         </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
-      </form>
+    );
+}
 
-      {message && <p>{message}</p>}
-
-      <p>
-        {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
-        <a href="#" onClick={() => setIsSignup(!isSignup)}>
-          {isSignup ? "Login here" : "Sign up here"}
-        </a>
-      </p>
-
-      {error && <p>{error}</p>}
-    </div>
-  );
-};
-
-export default LoginPage;
+export default Login;
