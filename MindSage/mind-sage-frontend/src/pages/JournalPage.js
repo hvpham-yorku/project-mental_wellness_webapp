@@ -9,19 +9,36 @@ const JournalPage = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/add-journal", {
-                content: journalText,
-            });
-
+            const token = localStorage.getItem("access_token"); 
+    
+            if (!token) {
+                alert("You must be logged in to save a journal.");
+                return;
+            }
+    
+            const response = await axios.post(
+                "http://localhost:5000/api/add-journal",
+                { content: journalText },
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,  
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+    
             if (response.status === 201) {
                 alert("Journal saved successfully!");
-                setJournalText(""); // Clear the text area after submission
+                setJournalText(""); // ✅ Clear input after saving
+            } else {
+                alert(`Error: ${response.data.error || "Failed to save journal."}`);
             }
+    
         } catch (error) {
             console.error("Error saving journal:", error);
             alert("Failed to save the journal. Please try again.");
         }
-    };
+    };    
 
     return (
         <div>
