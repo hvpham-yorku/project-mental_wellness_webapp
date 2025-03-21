@@ -9,6 +9,11 @@ For backend:Python, Flask, Flask-CORS, Supabase (database)
 For frontend: Node.js, npm, React, Axios, rc-slider
 Dev tools: git, GitHub, VS code
 
+Go to MindSage directory and activate venv:
+```
+source venv/bin/activate
+```
+
 Go to MindSage directory and then to backend directory. Run this:
 ```
 pip install -r requirements.txt
