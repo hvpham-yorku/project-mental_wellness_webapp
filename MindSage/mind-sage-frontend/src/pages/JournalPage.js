@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Journaling from "../components/Journaling";
 import axios from "axios";
+import "../home.css";
 
 const JournalPage = () => {
     const [journalText, setJournalText] = useState("");
@@ -47,8 +48,8 @@ const JournalPage = () => {
                 <Journaling journalText={journalText} setJournalText={setJournalText} />
             </div>
             <div>
-                <button onClick={() => navigate("/")}>Go Home</button>
                 <button onClick={handleSubmit}>Save Journal</button>
+                <button onClick={() => navigate("/Home")} className="button">Go Home</button>
             </div>
         </div>
     );
