@@ -49,7 +49,7 @@ const JournalPage = () => {
             </div>
             <div>
                 <button onClick={handleSubmit}>Save Journal</button>
-                <button onClick={() => navigate("/")} className="button">Go Home</button>
+                <button onClick={() => navigate("/Home")} className="button">Go Home</button>
             </div>
         </div>
     );
