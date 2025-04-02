@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import "../home.css";
 
 const EmojiSlider = ({ value, onChange, emojis }) => {
 
@@ -151,7 +152,7 @@ function Home() {
                 <button type="submit">Submit Mood Entry</button>
             </form>
             <div>
-                <button onClick={() => navigate("/journal")}>Go to Journal</button>
+                <button onClick={() => navigate("/journal")} className="button">Go to Journal</button>
             </div>
         </div>
 

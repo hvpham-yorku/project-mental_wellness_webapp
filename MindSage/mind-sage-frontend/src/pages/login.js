@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
+import "./Login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +54,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>{isSignup ? "Sign Up" : "Login"}</h1>
       <form onSubmit={isSignup ? handleSignup : handleLogin}>
         <div>
@@ -77,7 +78,8 @@ const LoginPage = () => {
         <button type="submit">{isSignup ? "Sign Up" : "Login"}</button>
       </form>
 
-      {message && <p>{message}</p>}
+          {message && <p className="message">{message}</p>}
+          {error && <p className="error">{error}</p>}
 
       <p>
         {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}

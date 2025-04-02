@@ -37,3 +37,102 @@
 .login-form button:hover {
     background-color: #0056b3;
 }
+
+/* General Page Styling */
+body {
+    background-color: #e8f5e9; /* Light green background */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Wrapper for Centering */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* Form Fields */
+form div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: #388e3c;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #81c784;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+    input:focus {
+        border-color: #388e3c;
+        outline: none;
+    }
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    button:hover {
+        background-color: #388e3c;
+    }
+
+/* Links */
+p {
+    font-size: 14px;
+    color: #2e7d32;
+}
+
+a {
+    color: #1b5e20;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #004d40;
+        text-decoration: underline;
+    }
+
+/* Message and Error Styling */
+p.message {
+    color: #388e3c;
+    font-weight: bold;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+}
