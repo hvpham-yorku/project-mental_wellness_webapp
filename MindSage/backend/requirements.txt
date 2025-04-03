@@ -5,3 +5,4 @@ gunicorn
 PyJWT
 requests
 flasgger
+flask_CORS
