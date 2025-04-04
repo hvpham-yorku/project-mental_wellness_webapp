@@ -22,6 +22,7 @@ python routes.py
 Then go to the mind-sage-frontend directory and run the following:
 ```
 npm install
+npm install @supabase/supabase-js
 npm start
 ```
 
