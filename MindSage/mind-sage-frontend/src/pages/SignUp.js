@@ -16,7 +16,7 @@ function Signup() {
       });
 
       if (response.data.success) {
-        setMessage("Account created successfully!");
+        setMessage("Account created successfully! Please verify your email before trying to log in.");
       } else {
         setMessage("Failed to create account.");
       }
