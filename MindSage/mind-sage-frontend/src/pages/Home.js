@@ -4,6 +4,7 @@ import axios from "axios";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "../home.css";
+import { supabase } from '../supabaseClient'; 
 
 const EmojiSlider = ({ value, onChange, emojis }) => {
 
@@ -87,7 +88,61 @@ function Home() {
             console.error("Error adding mood entry:", error.response?.data || error);
             setMessage("An error occurred while adding the mood entry.");
         }
+        
     };
+
+    const downloadMoodHistory = async () => {
+        console.log("Export button clicked ✅");
+      
+        const token = localStorage.getItem("access_token");
+        console.log("Access token:", token);
+      
+        if (!token) {
+          alert("You're not logged in!");
+          return;
+        }
+      
+        try {
+          const response = await fetch('http://localhost:5000/mood/history', {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+      
+          if (!response.ok) {
+            alert('Could not fetch mood history.');
+            return;
+          }
+      
+          const json = await response.json();
+          const moodEntries = json.data;
+      
+          if (!moodEntries || moodEntries.length === 0) {
+            alert("No mood history found.");
+            return;
+          }
+      
+          // Convert to JSON string
+          const dataStr = JSON.stringify(moodEntries, null, 2);
+          const blob = new Blob([dataStr], { type: 'application/json' });
+      
+          // Create download link
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'mood_history.json';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+      
+        } catch (error) {
+          console.error("Error downloading JSON:", error);
+          alert("Something went wrong while downloading.");
+        }
+      };      
+        
+      
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
@@ -149,11 +204,17 @@ function Home() {
                         onChange={(e) => setMoodData({ ...moodData, notes: e.target.value })}
                     />
                 </div>
+                
                 <button type="submit">Submit Mood Entry</button>
+                
             </form>
+            <div>
+                <button onClick={downloadMoodHistory} className="button">Export Mood History</button>
+            </div>
             <div>
                 <button onClick={() => navigate("/journal")} className="button">Go to Journal</button>
             </div>
+            
         </div>
 
     );
