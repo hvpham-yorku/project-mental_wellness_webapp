@@ -8,6 +8,10 @@ app = Flask(__name__)
 CORS(app)
 swagger = Swagger(app)
 
+@app.route("/")
+def index():
+    return "API is working!"
+
 @app.route('/api/add-journal', methods=['POST'])
 def add_journal_entry():
     """
